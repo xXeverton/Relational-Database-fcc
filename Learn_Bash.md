@@ -1,5 +1,5 @@
 # Learn Bash by Building a Boilerplate
----
+
 ## Resumo de comandos:
 
 ### Comandos Básicos
