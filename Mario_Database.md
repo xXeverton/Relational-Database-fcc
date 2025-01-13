@@ -68,3 +68,40 @@ VALUES('Mario', 'Mushroom Kingdom', 'Red'),
 ('Luigi', 'Mushroom Kingdom', 'Green'),
 ('Peach', 'Mushroom Kingdom', 'Pink');
 ```
+
+- It looks good, but there's a few mistakes. You can change a value like this:
+```sql
+UPDATE table_name SET column_name=new_value WHERE condition;
+```
+
+- Actually, you should put that in order. Here's an example:
+```sql
+SELECT columns FROM table_name ORDER BY column_name;
+```
+
+- How to add a primary key. It's a column that uniquely identifies each row in the table. Here's an example of how to set a PRIMARY KEY:
+```sql
+ALTER TABLE table_name ADD PRIMARY KEY(column_name);
+```
+
+- You can see the key for your name column at the bottom. It would have been better to use character_id for the primary key. Here's an example of how to drop a constraint:
+```sql
+ALTER TABLE table_name DROP CONSTRAINT constraint_name;
+```
+
+- Give it a type of `NUMERIC(4, 1)`. That data type is for decimals. `NUMERIC(4, 1)` has up to four digits and one of them has to be to the right of the decimal.
+
+- To know what row is for a character, you need to set a foreign key so you can relate rows from this table to rows from your characters table. Here's an example that creates a column as a foreign key:
+```sql
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE REFERENCES referenced_table_name(referenced_column_name);
+```
+
+- There's your foreign key at the bottom. These tables have a "one-to-one" relationship. One row in the characters table will be related to exactly one row in more_info and vice versa. Enforce that by adding the UNIQUE constraint to your foreign key. Here's an example:
+```sql
+ALTER TABLE table_name ADD UNIQUE(column_name);
+```
+
+- The column should also be NOT NULL since you don't want to have a row that is for nobody. Here's an example:
+```sql
+ALTER TABLE table_name ALTER COLUMN column_name SET NOT NULL;
+```
